@@ -1,0 +1,10 @@
+export CLASSPATH=".:~/.antlr/antlr-4.5-complete.jar:$CLASSPATH"
+alias antlr4='java -Xmx500M -cp "~/.antlr/antlr-4.5-complete.jar" org.antlr.v4.Tool'
+alias grun='java org.antlr.v4.runtime.misc.TestRig'
+
+antlr4 JsonPath.g4
+javac JsonPath*.java
+for f in sample*.*
+do
+  grun JsonPath jsonpath -tree $f
+done
